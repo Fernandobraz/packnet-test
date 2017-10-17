@@ -92,5 +92,23 @@ class FamilyMember {
  
     return false;
   }
+
+  function albums_owned(){
+    $query = "SELECT
+                  a.title, a.artist, fma.price, fma.purchase_date
+              FROM
+                  albums a
+                  LEFT JOIN
+                      family_member_album fma
+                          ON fma.album_id = a.id
+                  WHERE
+                      fma.family_member_id = ?";
+ 
+    $stmt = $this->conn->prepare( $query );
+    $stmt->bindParam(1, $this->id);
+    $stmt->execute();
+     
+    return $stmt;
+  }
 }
 ?>

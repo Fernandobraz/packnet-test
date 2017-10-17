@@ -11,6 +11,7 @@ $family_member->id = isset($_GET['id']) ? $_GET['id'] : die();
  
 $family_member->readOne();
 
+$albums_list = $family_member->albums_owned();
 ?>
 
 <h2>Family Member</h2>
@@ -36,6 +37,29 @@ $family_member->readOne();
         <td><?php echo '<a href="update.php?id=' . $family_member->id . '">Update</a>' ?></td>
         <td><?php echo '<a href="delete.php?id=' . $family_member->id . '" onclick="return confirm(\'Are you sure?\')">Delete</a>' ?></td>
       </tr>
+  </tbody>
+</table>
+
+<h3>Albuns owned</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Price</th>
+      <th>Purchased at</th>
+    </tr>
+  </thead>
+  <tbody>
+      <?php foreach($albums_list as $album) {?>
+      <tr>
+        <td><?php echo $album[0]; ?></td>
+        <td><?php echo  $album[1]; ?></td>
+        <td><?php echo  $album[2]; ?></td>
+        <td><?php echo  $album[3]; ?></td>
+      </tr>
+      <?php } ?> 
   </tbody>
 </table>
 

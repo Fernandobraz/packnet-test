@@ -79,6 +79,28 @@ class Album {
  
     return false;
   }
+
+  function genres_list(){
+    $query = "SELECT
+                g.name
+              FROM
+                albums a
+                LEFT JOIN
+                albums_genres ag
+                    ON ag.album_id = a.id
+                INNER JOIN
+                  genres g
+                    ON g.id = ag.genre_id
+              WHERE
+                a.id = ?";
+
+    $stmt = $this->conn->prepare( $query );
+    $stmt->bindParam(1, $this->id);
+    $stmt->execute();
+     
+    return $stmt;
+
+  }
 }
 
 ?>

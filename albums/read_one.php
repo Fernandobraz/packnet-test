@@ -10,6 +10,8 @@ $album = new Album($db);
 $album->id = isset($_GET['id']) ? $_GET['id'] : die();
  
 $album->readOne();
+
+$genres_list = $album->genres_list();
 ?>
 
 <h2>Album - <?php echo $album->title; ?></h2>
@@ -38,6 +40,13 @@ $album->readOne();
       </tr>
   </tbody>
 </table>
+
+<h3>List of Genres</h3>
+<ul>
+  <?php foreach($genres_list as $genre) {?>
+    <li><?php echo $genre[0];?></li>
+  <?php } ?>
+</ul>
 
 <a href="index.php">Back</a>
 <?php include "../templates/footer.php"; ?>
