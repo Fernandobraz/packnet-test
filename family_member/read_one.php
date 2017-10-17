@@ -12,6 +12,7 @@ $family_member->id = isset($_GET['id']) ? $_GET['id'] : die();
 $family_member->readOne();
 
 $albums_list = $family_member->albums_owned();
+$amount_spent = $family_member->amount_spent();
 ?>
 
 <h2>Family Member</h2>
@@ -36,6 +37,7 @@ $albums_list = $family_member->albums_owned();
         <td><?php echo $family_member->created; ?></td>
         <td><?php echo '<a href="update.php?id=' . $family_member->id . '">Update</a>' ?></td>
         <td><?php echo '<a href="delete.php?id=' . $family_member->id . '" onclick="return confirm(\'Are you sure?\')">Delete</a>' ?></td>
+        <td><?php echo '<a href="purchase_album.php?id=' . $family_member->id . '&name=' .  $family_member->name . '">Purchase album</a>' ?></td>
       </tr>
   </tbody>
 </table>

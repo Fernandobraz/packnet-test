@@ -110,5 +110,23 @@ class FamilyMember {
      
     return $stmt;
   }
+
+  function amount_spent(){
+    $query = "SELECT
+                  sum(fma.price) as amount
+              FROM
+                  albums a
+                  LEFT JOIN
+                      family_member_album fma
+                          ON fma.album_id = a.id
+                  WHERE
+                      fma.family_member_id = ?";
+ 
+    $stmt = $this->conn->prepare( $query );
+    $stmt->bindParam(1, $this->id);
+    $stmt->execute();
+     
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
 }
 ?>

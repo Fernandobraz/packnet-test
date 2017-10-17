@@ -33,6 +33,22 @@ class AlbumsGenres {
         return false;
     }
   }
+
+   function statistics_2(){
+    $query = "SELECT
+        g.name, count(*)     
+    FROM
+        genres g
+        LEFT JOIN
+            albums_genres ag
+                ON ag.genre_id = g.id
+     GROUP BY g.id";
+ 
+    $stmt = $this->conn->prepare( $query );
+    $stmt->execute();
+     
+    return $stmt;
+  }
 }
 
 ?>

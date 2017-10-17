@@ -38,6 +38,17 @@ class FamilyMemberAlbum {
         return false;
     }
   }
+
+   function statistics_1(){
+    $query = "SELECT YEAR(purchase_date), count(*), sum(price) as total_value
+    FROM " . $this->table_name . "
+    GROUP BY YEAR(purchase_date)";
+ 
+    $stmt = $this->conn->prepare( $query );
+    $stmt->execute();
+     
+    return $stmt;
+  }
 }
 
 ?>

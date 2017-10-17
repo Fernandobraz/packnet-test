@@ -13,5 +13,7 @@
     <a href="../family_member/index.php">Family Members</a>
     <a href="../albums/index.php">Albums</a>
     <a href="../genres/index.php">Genres</a>
+    <a href="../statistics/index.php?id=1">Statistics 1</a>
+    <a href="../statistics/index.php?id=2">Statistics 2</a>
   </header>
   <h1>Packnet Test</h1>
