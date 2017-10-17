@@ -9,4 +9,9 @@
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
+  <header>
+    <a href="../family_member/index.php">Family Members</a>
+    <a href="../albums/index.php">Albums</a>
+    <a href="../genres/index.php">Genres</a>
+  </header>
   <h1>Packnet Test</h1>
